@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'node:url';
 import { start } from './lib/server.mjs';
 import { run, validate } from './core.mjs';
+import { product } from './project.mjs';
 export * from './core.mjs';
 export const spec = { ...{
   "slug": "offcut",
@@ -39,7 +40,7 @@ export const spec = { ...{
   },
   "changed": "Locks now fix the exact stock and start coordinate. Cutting spans include kerf, and damaged areas cannot be consumed by either a piece or its cut.",
   "limits": "One-dimensional stock only; each piece is cut off once. No structural safety, tool control or optimality guarantee.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "inputSchema": {
     "type": "object",
     "required": [
@@ -58,6 +59,6 @@ export const spec = { ...{
       }
     }
   }
-}, run, validate };
+}, run, validate, product };
 if (process.argv[1] === fileURLToPath(import.meta.url)) start(spec);
 
